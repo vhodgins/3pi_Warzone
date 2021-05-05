@@ -1,0 +1,7 @@
+{
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "files.associations": {
+        "lcd_driver.h": "c",
+        "port_macros.h": "c"
+    }
+}

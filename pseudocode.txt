@@ -1,0 +1,97 @@
+
+Choice selection function: 
+
+
+
+    int select() {
+
+        char speed[3][4] = {"slow", "med", "fast"};
+        char direction[4][3] = {"fw","rv","cw","ccw"};
+
+        uint8_t spd = 0;
+        uint8_t dir = 0; 
+        uint8_t dur = 0;
+
+
+        // Choosing the speed
+        while(1){
+            LCD_execute_command(CLEAR_DISPLAY);
+            LCD_print_String(speed[spd]);   // To show the current value the user is selecting.
+
+            if (PINB & (1<<1)){             // Checks if A is pressed, and then decreases spd if possible.
+                if spd>0{
+                    spd-=1;
+                }
+            }
+
+            if (PINB & (1<<5)){             // Checks if C is pressed, and then increases spd if possible.
+                if spd<2{
+                    spd+=1;
+                }
+            }
+
+            if (PINB & (1<<4)){             // If B is pressed, breaks the loop with the current spd val saved.
+                break;
+            }
+        }
+
+        // Choosing the Direction
+        while(1){           
+            LCD_execute_command(CLEAR_DISPLAY);
+            LCD_print_String(direction[dir]);   // To show the current value the user is selecting.   
+
+            if (PINB & (1<<1)){             // Checks if A is pressed, and then decreases spd if possible.
+                if dir>0{
+                    dir-=1;
+                }
+            }
+
+            if (PINB & (1<<5)){             // Checks if C is pressed, and then increases spd if possible.
+                if dir<3{
+                    dir+=1;
+                }
+            }
+
+            if (PINB & (1<<4)){             // If B is pressed, breaks the loop with the current spd val saved.
+                break;
+            }
+
+        }
+
+        // Choosing Duration
+        while(1){
+            LCD_execute_command(CLEAR_DISPLAY);
+            LCD_print_hex8(dur);   // To show the current value the user is selecting.   
+
+            if (PINB & (1<<1)){             // Checks if A is pressed, and then decreases spd if possible.
+                if dur>0{
+                    dur-=1;
+                }
+            }
+
+            if (PINB & (1<<5)){             // Checks if C is pressed, and then increases spd if possible.
+                    dur+=1;
+            }
+
+            if (PINB & (1<<4)){             // If B is pressed, breaks the loop with the current spd val saved.
+                break;
+            }
+
+
+
+        }
+        
+
+
+
+
+
+    }
+
+
+
+Do Function:
+
+    void do(uint8_t speed, uint8_t direction, int duration){
+
+    }
